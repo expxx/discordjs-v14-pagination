@@ -8,7 +8,7 @@ const { ActionRowBuilder, ButtonStyle, ButtonBuilder, EmbedBuilder } = require("
  * @param {number} timeout The time the user has to press a button before the embed is deleted. Defaults to 60000 ms (1 minute). Must be a number greater than 0
  * @param {string} footer The footer to use. Defaults to "Page {current}/{total}". Must be a string. {current} and {total} will be replaced with the current page and the total number of pages.
  */
-module.exports = async (interaction, pages, buttons, timeout = 60000, footer = 'Page {current}/{total}') => {
+module.exports = async (interaction, pages, buttons, timeout = 60000, footer = 'Page {current}/{total}', ephemeral = false) => {
 
     if (!pages) throw new Error("No pages provided.");
     if (pages.length === 1) throw new Error("There is only one page.");
@@ -46,6 +46,7 @@ module.exports = async (interaction, pages, buttons, timeout = 60000, footer = '
 
     // Set the initial embed and buttons.
     const page = await interaction.editReply({
+        ephemeral: ephemeral
         embeds: [
             pages[0]
             .setFooter({text: footer.replace("{current}", currentPage + 1).replace("{total}", pages.length)})
