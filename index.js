@@ -46,7 +46,7 @@ module.exports = async (interaction, pages, buttons, timeout = 60000, footer = '
 
     // Set the initial embed and buttons.
     const page = await interaction.editReply({
-        ephemeral: ephemeral
+        ephemeral: ephemeral,
         embeds: [
             pages[0]
             .setFooter({text: footer.replace("{current}", currentPage + 1).replace("{total}", pages.length)})
