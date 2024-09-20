@@ -25,7 +25,9 @@ module.exports = async (interaction, pages, buttons, timeout = 60000, footer = '
     if (buttons.length === 4 && buttons[0].data.style === ButtonStyle.Link || buttons[1].data.style === ButtonStyle.Link || buttons[2].data.style === ButtonStyle.Link || buttons[3].data.style === ButtonStyle.Link) throw new Error("Buttons cannot be links.");
     if (buttons.length === 2 && buttons[0].data.style === ButtonStyle.Link || buttons[1].data.style === ButtonStyle.Link) throw new Error("Buttons cannot be links.");
 
-    if (!interaction.deferred) await interaction.deferReply();
+    if (!interaction.deferred) await interaction.deferReply({
+        ephemeral: ephemeral
+    });
 
     let currentPage = 0;
 
