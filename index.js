@@ -103,6 +103,7 @@ module.exports = async (interaction, pages, buttons, timeout = 60000, footer = '
 
             // Update the page to the new page
             await interaction.editReply({
+                ephemeral: ephemeral,
                 embeds: [
                     pages[currentPage]
                     .setFooter({text: footer.replace("{current}", currentPage + 1).replace("{total}", pages.length)})
